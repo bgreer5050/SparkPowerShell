@@ -57,13 +57,13 @@ namespace SparkPowerShell
                 PSCredential remoteMachineCredentials = new PSCredential(domainAndUserName, securePassword);
 
 
-                WSManConnectionInfo connectionInfo = new WSManConnectionInfo(false, @"10.0.99.97", 5985, "/wsman", @"http://schemas.microsoft.com/powershell/Microsoft.PowerShell", remoteMachineCredentials);
+                WSManConnectionInfo connectionInfo = new WSManConnectionInfo(false, @"10.0.205.12", 5985, "/wsman", @"http://schemas.microsoft.com/powershell/Microsoft.PowerShell", remoteMachineCredentials);
 
                 Runspace rspace = RunspaceFactory.CreateRunspace();
                 rspace.Open();
-                Pipeline pl = rspace.CreatePipeline("Set-Item WSMan:\\localhost\\Client\\TrustedHosts -Value 10.0.99.97 -Force");
+                Pipeline pl = rspace.CreatePipeline("Set-Item WSMan:\\localhost\\Client\\TrustedHosts -Value 10.0.205.12 -Force");
                 var res = pl.Invoke();
-                txtResult.Text = "test";
+                txtResult.Text = "test "; 
                 System.Threading.Thread.Sleep(2000);
 
 
@@ -72,12 +72,12 @@ namespace SparkPowerShell
                 {
 
                     runspace.Open();
-                    
-                    Pipeline pipeline = runspace.CreatePipeline("set-date \"Wednesday, February 10, 2016 7:19:00 AM\"");
-                   // Pipeline pipeline = runspace.CreatePipeline("Set-Item WSMan:\\localhost\\Client\\TrustedHosts -Value 10.0.99.97");
+
+                    Pipeline pipeline = runspace.CreatePipeline("set-date \"Wednesday, February 10, 2016 11:30:00 AM\"");
+                    // Pipeline pipeline = runspace.CreatePipeline("Set-Item WSMan:\\localhost\\Client\\TrustedHosts -Value 10.0.99.97");
 
                     var results = pipeline.Invoke();
-                    
+
                     txtResult.Text = results.Count.ToString();
 
                 }
