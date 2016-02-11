@@ -43,7 +43,8 @@ namespace SparkPowerShell
                 SecureString securePassword;
 
                 // Define the string value to assign to a new secure string.
-                char[] chars = { 'p', '@', 's', 's', 'w', '0', 'r', 'd' };
+                //char[] chars = { 'p', '@', 's', 's', 'w', '0', 'r', 'd' };
+                char[] chars = { 's', 'p', 'a', 'r', 'k', 'p', 'i'};
 
                 unsafe
                 {
@@ -57,11 +58,11 @@ namespace SparkPowerShell
                 PSCredential remoteMachineCredentials = new PSCredential(domainAndUserName, securePassword);
 
 
-                WSManConnectionInfo connectionInfo = new WSManConnectionInfo(false, @"10.0.205.12", 5985, "/wsman", @"http://schemas.microsoft.com/powershell/Microsoft.PowerShell", remoteMachineCredentials);
+                WSManConnectionInfo connectionInfo = new WSManConnectionInfo(false, @"10.0.110.27", 5985, "/wsman", @"http://schemas.microsoft.com/powershell/Microsoft.PowerShell", remoteMachineCredentials);
 
                 Runspace rspace = RunspaceFactory.CreateRunspace();
                 rspace.Open();
-                Pipeline pl = rspace.CreatePipeline("Set-Item WSMan:\\localhost\\Client\\TrustedHosts -Value 10.0.205.12 -Force");
+                Pipeline pl = rspace.CreatePipeline("Set-Item WSMan:\\localhost\\Client\\TrustedHosts -Value 10.0.110.27 -Force");
                 var res = pl.Invoke();
                 txtResult.Text = "test "; 
                 System.Threading.Thread.Sleep(2000);
@@ -72,8 +73,10 @@ namespace SparkPowerShell
                 {
 
                     runspace.Open();
+                    string command = TimeBuilder.BuildString();
 
-                    Pipeline pipeline = runspace.CreatePipeline("set-date \"Wednesday, February 10, 2016 11:30:00 AM\"");
+                    Pipeline pipeline = runspace.CreatePipeline(command);
+                    //Pipeline pipeline = runspace.CreatePipeline("set-date \"Thursday, February 11, 2016 1:03:00 PM\"");
                     // Pipeline pipeline = runspace.CreatePipeline("Set-Item WSMan:\\localhost\\Client\\TrustedHosts -Value 10.0.99.97");
 
                     var results = pipeline.Invoke();
