@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SparkPowerShell
 {
-    public static class TimeBuilder
+    public static class CommandBuilder
     {
-        public static string BuildString()
+        public static string SetTime()
         {
             string strDateString = "";
 
@@ -26,6 +26,13 @@ namespace SparkPowerShell
             strDateString += "\"";
 
             return strDateString;
+        }
+
+        public static string Reboot()
+        {
+            string strCommand = @"shutdown /r /t 0";
+
+            return strCommand;
         }
        
 

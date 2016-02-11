@@ -73,7 +73,7 @@ namespace SparkPowerShell
                 {
 
                     runspace.Open();
-                    string command = TimeBuilder.BuildString();
+                    string command = CommandBuilder.Reboot();
 
                     Pipeline pipeline = runspace.CreatePipeline(command);
                     //Pipeline pipeline = runspace.CreatePipeline("set-date \"Thursday, February 11, 2016 1:03:00 PM\"");
