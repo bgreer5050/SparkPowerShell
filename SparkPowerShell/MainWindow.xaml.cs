@@ -63,8 +63,12 @@ namespace SparkPowerShell
                 rspace.Open();
                 Pipeline pl = rspace.CreatePipeline("Set-Item WSMan:\\localhost\\Client\\TrustedHosts -Value 10.0.205.12 -Force");
                 var res = pl.Invoke();
-                txtResult.Text = "test "; 
+
+
+              
                 System.Threading.Thread.Sleep(2000);
+
+
 
 
                 using (Runspace runspace = RunspaceFactory.CreateRunspace(connectionInfo))
@@ -73,12 +77,20 @@ namespace SparkPowerShell
 
                     runspace.Open();
 
-                    Pipeline pipeline = runspace.CreatePipeline("set-date \"Wednesday, February 10, 2016 11:30:00 AM\"");
+                    Pipeline pipeline = runspace.CreatePipeline("IoTStartup list");
                     // Pipeline pipeline = runspace.CreatePipeline("Set-Item WSMan:\\localhost\\Client\\TrustedHosts -Value 10.0.99.97");
 
                     var results = pipeline.Invoke();
 
-                    txtResult.Text = results.Count.ToString();
+                    string s = "";
+
+                    foreach(PSObject obj in results.ToList())
+                    {
+                        s += obj.BaseObject.ToString();
+                       
+                    }
+
+                    txtResult.Text = s;
 
                 }
 
