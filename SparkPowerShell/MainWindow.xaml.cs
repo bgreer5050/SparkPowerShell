@@ -73,8 +73,8 @@ namespace SparkPowerShell
                 {
 
                     runspace.Open();
-                    string command = CommandBuilder.Reboot();
-
+                    //string command = CommandBuilder.Reboot();
+                    string command = CommandBuilder.SetTime();
                     Pipeline pipeline = runspace.CreatePipeline(command);
                     //Pipeline pipeline = runspace.CreatePipeline("set-date \"Thursday, February 11, 2016 1:03:00 PM\"");
                     // Pipeline pipeline = runspace.CreatePipeline("Set-Item WSMan:\\localhost\\Client\\TrustedHosts -Value 10.0.99.97");
