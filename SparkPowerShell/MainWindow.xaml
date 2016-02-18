@@ -6,6 +6,11 @@
         xmlns:local="clr-namespace:SparkPowerShell"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+
+    <Window.Resources>
+        <c:
+    </Window.Resources>
+    
     <Grid>
         <Button x:Name="btnSetTime" Content="Test" HorizontalAlignment="Left" Margin="208,110,0,0" VerticalAlignment="Top" Width="76" Click="btnSetTime_Click"/>
         <TextBlock x:Name="txtResult" HorizontalAlignment="Left" Margin="53,151,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="72" Width="405"/>
