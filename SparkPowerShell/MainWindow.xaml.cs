@@ -23,15 +23,38 @@ namespace SparkPowerShell
     /// </summary>
     public partial class MainWindow : Window
     {
+
+
         public MainWindow()
         {
             InitializeComponent();
-        }
+
+        List<Pi> Pis = new List<Pi>();
+
+        Pi m135spark = new Pi { AssetNumber = "135", HostName = "m135spark", IPAddress = "10.0.205.12" };
+        Pi m1005spark = new Pi { AssetNumber = "1005", HostName = "m1005spark", IPAddress = "10.0.205.14" };
+        Pi m1090spark = new Pi { AssetNumber = "1090", HostName = "m1090spark", IPAddress = "10.0.205.10" };
+
+        Pi m155spark = new Pi { AssetNumber = "155", HostName = "m155spark", IPAddress = "" };
+        Pi m944spark = new Pi { AssetNumber = "944", HostName = "m944spark", IPAddress = "" };
+        Pi m1081spark = new Pi { AssetNumber = "1081", HostName = "m1081spark", IPAddress = "" };
+        Pi m1087spark = new Pi { AssetNumber = "1087", HostName = "m1087spark", IPAddress = "" };
+
+        Pi m605spark = new Pi { AssetNumber = "605", HostName = "m605spark", IPAddress = "10.0.110.25" };
+        Pi m701spark = new Pi { AssetNumber = "701", HostName = "m701spark", IPAddress = "10.0.110.22" };
+        Pi m702spark = new Pi { AssetNumber = "702", HostName = "m702spark", IPAddress = "10.0.110.23" };
+        Pi m804spark = new Pi { AssetNumber = "804", HostName = "m804spark", IPAddress = "10.0.110.24" };
+
+        Pi m483spark1 = new Pi { AssetNumber = "483", HostName = "", IPAddress = "" };
+
+    }
 
         private void btnSetTime_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+
+
                 string domainAndUserName = @"10.0.99.97\Administrator";
 
                 //char[] pw = "p@ssw0rd".ToCharArray();

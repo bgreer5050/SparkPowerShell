@@ -13,5 +13,7 @@ namespace SparkPowerShell
     /// </summary>
     public partial class App : Application
     {
+       
+
     }
 }
