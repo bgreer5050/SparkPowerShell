@@ -15,6 +15,6 @@ namespace SparkPowerShell
         public string TimeUpdatedSuccessfullyAt { get; set; }
         public bool TimeUpdatedSuccessfully { get; set; }
         public int TimeFailedCounter { get; set; }
-
+        public string CurrentDateTime { get; set; }
     }
 }
