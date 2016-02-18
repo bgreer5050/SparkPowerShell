@@ -12,5 +12,9 @@ namespace SparkPowerShell
         public string HostName { get; set; }
         public string AssetNumber { get; set; }
 
+        public string TimeUpdatedSuccessfullyAt { get; set; }
+        public bool TimeUpdatedSuccessfully { get; set; }
+        public int TimeFailedCounter { get; set; }
+
     }
 }

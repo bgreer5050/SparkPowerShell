@@ -10,5 +10,16 @@
         <Button x:Name="btnSetTime" Content="Test" HorizontalAlignment="Left" Margin="208,110,0,0" VerticalAlignment="Top" Width="76" Click="btnSetTime_Click"/>
         <TextBlock x:Name="txtResult" HorizontalAlignment="Left" Margin="53,151,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="72" Width="405"/>
 
+
+        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal">
+            <Grid x:Name="m135" Background="Green" Height="25">
+                <TextBlock>M135 Spark</TextBlock>
+            </Grid>
+                <Grid x:Name="m1090" Background="Green" Height="25">
+                    <TextBlock>M135 Spark</TextBlock>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
