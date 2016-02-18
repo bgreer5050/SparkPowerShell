@@ -47,8 +47,13 @@ namespace SparkPowerShell
             Pis.Add(new Pi { AssetNumber = "804", HostName = "m804spark", IPAddress = "10.0.110.24" });
             // Pis.Add(new Pi { AssetNumber = "483", HostName = "", IPAddress = "" });
 
-            timerUppdateTime = new Timer(UpdatePis, null, 5000, 600000);
+           // timerUppdateTime = new Timer(UpdatePis, null, 5000, 600000);
     }
+
+        private async void UpdatePis(object state)
+        {
+            throw new NotImplementedException();
+        }
 
         private async void btnSetTime_Click(object sender, RoutedEventArgs e)
         {
@@ -60,13 +65,24 @@ namespace SparkPowerShell
                 string strMessages = p.HostName;
                 strMessages += " ";
 
-                var tokenSource = new CancellationTokenSource();
-                var token = tokenSource.Token;
+                var cts = new CancellationTokenSource();
+                CancellationToken token = cts.Token;
+                cts.CancelAfter(60000);
 
-                var task = Task.Run(() =>
+                //var token = new CancellationTokenSource(1000).Token;
+               // var token = tokenSource.Token;
+
+                System.Timers.Timer timerTaskTimeLimit = new System.Timers.Timer();
+                timerTaskTimeLimit.Elapsed += TimerTaskTimeLimit_Elapsed;
+
+
+
+                var task = Task.Factory.StartNew(() =>
                 {
+                    
                     try
                     {
+                       
                         string domainAndUserName;
                         if (p.IPAddress != null && p.IPAddress.Length > 5)
                         {
@@ -146,8 +162,9 @@ namespace SparkPowerShell
                             intSuccess += 1;
 
                         }
-
+                       
                         securePassword.Dispose();
+                        token.ThrowIfCancellationRequested();
                     }
                     catch (Exception ex)
                     {
@@ -158,13 +175,22 @@ namespace SparkPowerShell
                     }
                 },token);
 
-                task.Wait(60000);
-
+                try
+                {
+                    task.Wait();
+                }
+                catch(AggregateException ex)
+                {
+                    strMessages += ex.Message;
+                }
                 MessageBox.Show("Success " + intSuccess.ToString() + " Fail " + intFail.ToString() + strMessages);
             }
         }
 
-
+        private void TimerTaskTimeLimit_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
         System.Threading.Timer timerUppdateTime;
 
