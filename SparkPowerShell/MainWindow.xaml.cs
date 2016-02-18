@@ -6,6 +6,7 @@ using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Security;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -44,7 +45,9 @@ namespace SparkPowerShell
             Pis.Add(new Pi { AssetNumber = "701", HostName = "m701spark", IPAddress = "10.0.110.22" });
           
             Pis.Add(new Pi { AssetNumber = "804", HostName = "m804spark", IPAddress = "10.0.110.24" });
-           // Pis.Add(new Pi { AssetNumber = "483", HostName = "", IPAddress = "" });
+            // Pis.Add(new Pi { AssetNumber = "483", HostName = "", IPAddress = "" });
+
+            timerUppdateTime = new Timer(UpdatePis, null, 5000, 600000);
     }
 
         private async void btnSetTime_Click(object sender, RoutedEventArgs e)
@@ -56,7 +59,11 @@ namespace SparkPowerShell
             {
                 string strMessages = p.HostName;
                 strMessages += " ";
-                await Task.Run(() =>
+
+                var tokenSource = new CancellationTokenSource();
+                var token = tokenSource.Token;
+
+                var task = Task.Run(() =>
                 {
                     try
                     {
@@ -149,9 +156,17 @@ namespace SparkPowerShell
                         intFail += 1;
                         //txtResult.Text = "ERROR: " + ex.Message;
                     }
-                });
+                },token);
+
+                task.Wait(60000);
+
                 MessageBox.Show("Success " + intSuccess.ToString() + " Fail " + intFail.ToString() + strMessages);
             }
         }
+
+
+
+        System.Threading.Timer timerUppdateTime;
+
     }
 }
