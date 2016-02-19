@@ -49,7 +49,7 @@ namespace SparkPowerShell
             new Pi { AssetNumber = "804", HostName = "m804spark", IPAddress = "10.0.110.24" },
             new Pi { AssetNumber = "483", HostName = "", IPAddress = "" }
         };
-             timerUppdateTime = new Timer(UpdatePis, null, 5000, 600000);
+             timerUppdateTime = new Timer(UpdatePis, null, 5000, 900000);
             this.DataContext = Pis;
             lstNames.ItemsSource = Pis;
             
@@ -60,7 +60,7 @@ namespace SparkPowerShell
             int intSuccess = 0;
             int intFail = 0;
 
-            foreach (Pi p in Pis)
+            foreach (Pi p in Pis.Where(c=>c.TimeUpdateDue==true).ToList())
             {
                 p.Note = "Attempting: " + DateTime.Now.ToLocalTime();
 
@@ -69,7 +69,7 @@ namespace SparkPowerShell
 
                 var cts = new CancellationTokenSource();
                 CancellationToken token = cts.Token;
-                cts.CancelAfter(60000);
+                cts.CancelAfter(120000);
 
                 //var token = new CancellationTokenSource(1000).Token;
                 // var token = tokenSource.Token;

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SparkPowerShell"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Spark Control Panel" Height="450" Width="900">
 
     
     <Grid>
@@ -75,19 +75,22 @@
         </StackPanel>
 
         <ListView x:Name="lstNames" Margin="5,5,5,5" Grid.Column="1" Grid.Row="0">
-            <!--<ListView.ItemContainerStyle>
+            <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
-                    <Setter Property="Background" Value="{Binding Brush}" />
+                    <!--<Setter Property="Background" Value="{Binding Brush}" />-->
+                    <Setter Property="Height" Value="30" />
                 </Style>
-            </ListView.ItemContainerStyle>-->
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView x:Name="grdName">
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding HostName}" />
-                    <GridViewColumn Header="IPAddress" DisplayMemberBinding="{Binding IPAddress}"  />
-                    <GridViewColumn Header="TimeUpdatedSuccessfully" DisplayMemberBinding="{Binding TimeUpdatedSuccessfully}"/>
-                    <GridViewColumn Header="TimeLastUpdatedAt" DisplayMemberBinding="{Binding TimeUpdatedSuccessfullyAt}"/>
-                    <GridViewColumn Header="Note" DisplayMemberBinding="{Binding Note}"/>
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding HostName}" Width="100" />
+                    <GridViewColumn Header="IP Address" DisplayMemberBinding="{Binding IPAddress}" Width="100" />
+                    <GridViewColumn Header="Last Attempt Successful" DisplayMemberBinding="{Binding TimeUpdatedSuccessfully}" Width="200" />
+                    <GridViewColumn Header="TimeLastUpdatedAt" DisplayMemberBinding="{Binding TimeUpdatedSuccessfullyAt}" Width="200"/>
+                    <GridViewColumn Header="Note" DisplayMemberBinding="{Binding Note}" Width="150"/>
+                    <GridViewColumn Header="Update Due" DisplayMemberBinding="{Binding TimeUpdateDue}" Width="50"/>
 
+                    
                 </GridView>
             </ListView.View>
         </ListView>

@@ -41,6 +41,7 @@ namespace SparkPowerShell
         private int timeFailedCounter;
         private string currentDateTime;
         private long timeUpdatedLastAtTicks;
+        private bool timeUpdateDue;
          
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -171,8 +172,34 @@ namespace SparkPowerShell
             }
         }
 
+        public bool TimeUpdateDue
+        {
+            get
+            {
+                if (TimeUpdatedLastAtTicks != 0)
+                {
+                    TimeSpan ts = DateTime.Now - new DateTime(TimeUpdatedLastAtTicks);
+                    if (ts.TotalMinutes > 30)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            set
+            {
+                timeUpdateDue = value;
+                OnPropertyChanged("TimeUpdateDue");
+            }
 
-
+        }
 
     }
 }

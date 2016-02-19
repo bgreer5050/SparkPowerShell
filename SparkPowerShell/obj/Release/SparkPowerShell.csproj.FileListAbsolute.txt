@@ -3,3 +3,12 @@ C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\obj\Release\App.g.
 C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\obj\Release\SparkPowerShell_MarkupCompile.cache
 C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\obj\Release\SparkPowerShell_MarkupCompile.lref
 C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\bin\Release\SparkPowerShell.exe.config
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\bin\Release\SparkPowerShell.exe
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\bin\Release\SparkPowerShell.pdb
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\bin\Release\System.Management.Automation.dll
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\obj\Release\MainWindow.baml
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\obj\Release\SparkPowerShell.g.resources
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\obj\Release\SparkPowerShell.Properties.Resources.resources
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\obj\Release\SparkPowerShell.csproj.GenerateResource.Cache
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\obj\Release\SparkPowerShell.exe
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\obj\Release\SparkPowerShell.pdb
