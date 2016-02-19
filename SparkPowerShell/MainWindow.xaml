@@ -73,5 +73,26 @@
 
             </StackPanel>
         </StackPanel>
+
+        <ListView x:Name="lstNames" Margin="5,5,5,5" Grid.Column="1" Grid.Row="0">
+            <!--<ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Background" Value="{Binding Brush}" />
+                </Style>
+            </ListView.ItemContainerStyle>-->
+            <ListView.View>
+                <GridView x:Name="grdName">
+                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding HostName}" />
+                    <GridViewColumn Header="IPAddress" DisplayMemberBinding="{Binding IPAddress}"  />
+                    <GridViewColumn Header="TimeUpdatedSuccessfully" DisplayMemberBinding="{Binding TimeUpdatedSuccessfully}"/>
+                    <GridViewColumn Header="TimeUpdatedSuccessfully" DisplayMemberBinding="{Binding Note}"/>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
     </Grid>
+    
+    
 </Window>

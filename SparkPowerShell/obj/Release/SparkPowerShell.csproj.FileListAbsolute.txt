@@ -1,0 +1,5 @@
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\obj\Release\MainWindow.g.cs
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\obj\Release\App.g.cs
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\obj\Release\SparkPowerShell_MarkupCompile.cache
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\obj\Release\SparkPowerShell_MarkupCompile.lref
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\bin\Release\SparkPowerShell.exe.config
