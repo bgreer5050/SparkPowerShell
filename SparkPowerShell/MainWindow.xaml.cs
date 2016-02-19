@@ -27,13 +27,17 @@ namespace SparkPowerShell
     {
         public List<Pi> Pis;
 
+        private Timer _timer;
+        
+      
         public MainWindow()
         {
             InitializeComponent();
+                     
 
-        Pis = new List<Pi>();
+            Pis = new List<Pi>();
 
-        Pis.Add(new Pi { AssetNumber = "135", HostName = "m135spark", IPAddress = "10.0.205.12" });
+            Pis.Add(new Pi { AssetNumber = "135", HostName = "m135spark", IPAddress = "10.0.205.12" });
             Pis.Add(new Pi { AssetNumber = "702", HostName = "m702spark", IPAddress = "10.0.110.27" });
             Pis.Add(new Pi { AssetNumber = "1005", HostName = "m1005spark", IPAddress = "10.0.205.14" });
             Pis.Add(new Pi { AssetNumber = "1090", HostName = "m1090spark", IPAddress = "10.0.205.10" });
@@ -47,14 +51,32 @@ namespace SparkPowerShell
             Pis.Add(new Pi { AssetNumber = "804", HostName = "m804spark", IPAddress = "10.0.110.24" });
             // Pis.Add(new Pi { AssetNumber = "483", HostName = "", IPAddress = "" });
 
-            timerUppdateTime = new Timer(UpdatePis, null, 5000, 600000);
+            timerUppdateTime = new Timer(UpdatePis, null, 5000, 900000);
     }
 
-        private async void btnSetTime_Click(object sender, RoutedEventArgs e)
+        private void UpdateUI(object state)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                txtResult.Text = DateTime.Now.ToLongDateString();
+
+                foreach(Pi _p in Pis.ToList())
+                {
+                    if(_p.TimeUpdatedSuccessfully == false)
+                    {
+                      //   _p.ControlColor = new SolidColorBrush { Color = Color.FromRgb(100, 100, 100) };
+                    }
+                }
+            });
+        }
+
+        private void UpdatePis(object state)
         {
             int intSuccess = 0;
             int intFail = 0;
-           
+
+            _timer = new Timer(UpdateUI, null, 5000, 5000);
+                        
             foreach (Pi p in Pis)
             {
                 string strMessages = p.HostName;
@@ -115,18 +137,18 @@ namespace SparkPowerShell
                         Pipeline pl;
                         if (p.IPAddress != null && p.IPAddress.Length > 5)
                         {
-                           pl = rspace.CreatePipeline("Set-Item WSMan:\\localhost\\Client\\TrustedHosts -Value " + p.IPAddress + " -Force");
+                            pl = rspace.CreatePipeline("Set-Item WSMan:\\localhost\\Client\\TrustedHosts -Value " + p.IPAddress + " -Force");
                         }
                         else
                         {
-                           pl = rspace.CreatePipeline("Set-Item WSMan:\\localhost\\Client\\TrustedHosts -Value " + p.HostName + " -Force");
+                            pl = rspace.CreatePipeline("Set-Item WSMan:\\localhost\\Client\\TrustedHosts -Value " + p.HostName + " -Force");
                         }
 
 
                         //rspace.Open();
                         var _result = pl.Invoke();
                         Debug.WriteLine("R1: " + _result.ToString());
-                       
+
                         using (Runspace runspace = RunspaceFactory.CreateRunspace(connectionInfo))
                         {
 
@@ -144,6 +166,7 @@ namespace SparkPowerShell
                             p.CurrentDateTime = respGetDate[0].ToString();
                             //txtResult.Text = results.Count.ToString();
                             intSuccess += 1;
+                            p.TimeUpdatedSuccessfully = true;
 
                         }
 
@@ -154,18 +177,32 @@ namespace SparkPowerShell
                         strMessages += " ";
                         strMessages += ex.Message;
                         intFail += 1;
+                        p.TimeUpdatedSuccessfully = false;
+
                         //txtResult.Text = "ERROR: " + ex.Message;
                     }
-                },token);
+                }, token);
 
-                task.Wait(60000);
+                try
+                {
+                    task.Wait(60000);
+                }
+                catch(AggregateException _ex)
+                {
+                    p.TimeUpdatedSuccessfully = false;
+                    
+                }
 
-                MessageBox.Show("Success " + intSuccess.ToString() + " Fail " + intFail.ToString() + strMessages);
+               // txtResult.Text = "Success " + intSuccess.ToString() + " Fail " + intFail.ToString() + strMessages;
+                //MessageBox.Show("Success " + intSuccess.ToString() + " Fail " + intFail.ToString() + strMessages);
             }
         }
 
-
-
+        private async void btnSetTime_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        
         System.Threading.Timer timerUppdateTime;
 
     }

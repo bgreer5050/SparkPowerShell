@@ -13,12 +13,58 @@
 
         <StackPanel Orientation="Horizontal">
         <StackPanel Orientation="Horizontal">
-            <Grid x:Name="m135" Background="Green" Height="25">
+           
+            <Grid x:Name="m135" Background="Gray" Height="25">
                 <TextBlock>M135 Spark</TextBlock>
             </Grid>
-                <Grid x:Name="m1090" Background="Green" Height="25">
-                    <TextBlock>M135 Spark</TextBlock>
+
+                <Grid x:Name="m1090" Background="Gray" Height="25">
+                    <TextBlock>M1090 Spark</TextBlock>
+            </Grid>
+
+                <Grid x:Name="m1005" Background="Gray" Height="25">
+                    <TextBlock>M1005 Spark</TextBlock>
                 </Grid>
+
+                <Grid x:Name="m155" Background="Gray" Height="25">
+                    <TextBlock>M155 Spark</TextBlock>
+                </Grid>
+
+                <Grid x:Name="m944" Background="Gray" Height="25">
+                    <TextBlock>M944 Spark</TextBlock>
+                </Grid>
+
+                <Grid x:Name="m1081" Background="Gray" Height="25">
+                    <TextBlock>M1081 Spark</TextBlock>
+                </Grid>
+
+                <Grid x:Name="m1087" Background="Gray" Height="25">
+                    <TextBlock>M1087 Spark</TextBlock>
+                </Grid>
+
+                <Grid x:Name="m605" Background="Gray" Height="25">
+                    <TextBlock>M605 Spark</TextBlock>
+                </Grid>
+
+                <Grid x:Name="m701" Background="Gray" Height="25">
+                    <TextBlock>M701 Spark</TextBlock>
+                </Grid>
+
+                <Grid x:Name="m702" Background="Gray" Height="25">
+                    <TextBlock>M702 Spark</TextBlock>
+                </Grid>
+
+                <Grid x:Name="m768" Background="Gray" Height="25">
+                    <TextBlock>M768 Spark</TextBlock>
+                </Grid>
+
+                <Grid x:Name="m804" Background="Gray" Height="25">
+                    <TextBlock>M804 Spark</TextBlock>
+                </Grid>
+
+
+
+
             </StackPanel>
         </StackPanel>
     </Grid>
