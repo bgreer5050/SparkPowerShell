@@ -85,7 +85,8 @@
                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding HostName}" />
                     <GridViewColumn Header="IPAddress" DisplayMemberBinding="{Binding IPAddress}"  />
                     <GridViewColumn Header="TimeUpdatedSuccessfully" DisplayMemberBinding="{Binding TimeUpdatedSuccessfully}"/>
-                    <GridViewColumn Header="TimeUpdatedSuccessfully" DisplayMemberBinding="{Binding Note}"/>
+                    <GridViewColumn Header="TimeLastUpdatedAt" DisplayMemberBinding="{Binding TimeUpdatedSuccessfullyAt}"/>
+                    <GridViewColumn Header="Note" DisplayMemberBinding="{Binding Note}"/>
 
                 </GridView>
             </ListView.View>

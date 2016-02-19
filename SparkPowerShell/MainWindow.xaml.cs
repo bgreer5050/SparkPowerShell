@@ -163,6 +163,9 @@ namespace SparkPowerShell
                             //txtResult.Text = results.Count.ToString();
                             intSuccess += 1;
                             p.TimeUpdatedSuccessfully = true;
+                            p.TimeUpdatedSuccessfullyAt = DateTime.Now.ToLongTimeString();
+                            p.TimeUpdatedLastAtTicks = DateTime.Now.Ticks;
+
                         }
 
                         securePassword.Dispose();
@@ -187,7 +190,7 @@ namespace SparkPowerShell
                     p.TimeUpdatedSuccessfully = false;
                     strMessages += ex.Message;
                 }
-                MessageBox.Show("Success " + intSuccess.ToString() + " Fail " + intFail.ToString() + strMessages);
+               // MessageBox.Show("Success " + intSuccess.ToString() + " Fail " + intFail.ToString() + strMessages);
             }
         }
 

@@ -40,14 +40,15 @@ namespace SparkPowerShell
         private bool timeUpdatedSuccessfully;
         private int timeFailedCounter;
         private string currentDateTime;
+        private long timeUpdatedLastAtTicks;
+         
 
         public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string status)
+        private void OnPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(status));
-            }
+            var handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public string IPAddress
@@ -57,7 +58,7 @@ namespace SparkPowerShell
             set
             {
                 ipAddress = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("IPAddress"));
+                OnPropertyChanged("IPAddress");
             }
 
         }
@@ -70,7 +71,7 @@ namespace SparkPowerShell
             set
             {
                 hostName = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("HostName"));
+                OnPropertyChanged("HostName");
             }
         }
         public string AssetNumber
@@ -83,7 +84,7 @@ namespace SparkPowerShell
             set
             {
                 assetNumber = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("AssetNumber"));
+                OnPropertyChanged("AssetNumber");
             }
         }
 
@@ -97,7 +98,7 @@ namespace SparkPowerShell
             set
             {
                 note = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("Note"));
+                OnPropertyChanged("Note");
             }
         }
 
@@ -111,7 +112,7 @@ namespace SparkPowerShell
             set
             {
                 timeUpdatedSuccessfullyAt = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("TimeUpdatedSuccessfullyAt"));
+                OnPropertyChanged("TimeUpdatedSuccessfullyAt");
             }
         }
 
@@ -125,7 +126,7 @@ namespace SparkPowerShell
             set
             {
                 timeUpdatedSuccessfully = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("TimeUpdatedSuccessfully"));
+                OnPropertyChanged("TimeUpdatedSuccessfully");
             }
         }
 
@@ -139,7 +140,7 @@ namespace SparkPowerShell
             set
             {
                 timeFailedCounter = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("TimeFailedCounter"));
+                OnPropertyChanged("TimeFailedCounter");
             }
         }
         public string CurrentDateTime
@@ -152,8 +153,26 @@ namespace SparkPowerShell
             set
             {
                 currentDateTime = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("CurrentDateTime"));
+                OnPropertyChanged("CurrentDateTime");
             }
         }
+
+        public long TimeUpdatedLastAtTicks
+        {
+            get
+            {
+                return timeUpdatedLastAtTicks;
+            }
+
+            set
+            {
+                timeUpdatedLastAtTicks = value;
+                OnPropertyChanged("CurrentDateTime");
+            }
+        }
+
+
+
+
     }
 }
