@@ -17,29 +17,6 @@
             <StackPanel Orientation="Horizontal">
 
 
-                <Grid x:Name="m135" Background="Green" Height="25" Width="100">
-                    <TextBlock>M135 Spark</TextBlock>
-                </Grid>
-
-                <Grid x:Name="m1090" Background="Yellow" Height="25" Width="100">
-                    <TextBlock>M1090 Spark</TextBlock>
-                </Grid>
-
-                <Grid x:Name="m1005" Background="Green" Height="25" Width="100">
-                    <TextBlock>M1005 Spark</TextBlock>
-                </Grid>
-
-                <Grid x:Name="m155" Background="Red" Height="25" Width="100">
-                    <TextBlock>M155 Spark</TextBlock>
-                </Grid>
-
-                <Grid x:Name="m944" Background="Yellow" Height="25" Width="100">
-                    <TextBlock>M944 Spark</TextBlock>
-                </Grid>
-
-                <Grid x:Name="m1081" Background="Green" Height="25" Width="100">
-                    <TextBlock>M1081 Spark</TextBlock>
-                </Grid>
 
             </StackPanel>
             <StackPanel Orientation="Horizontal">
@@ -97,6 +74,4 @@
 
 
     </Grid>
-    
-    
 </Window>

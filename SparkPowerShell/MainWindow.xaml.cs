@@ -38,7 +38,7 @@ namespace SparkPowerShell
             {
             new Pi { AssetNumber = "135", HostName = "m135spark", IPAddress = "10.0.205.12" },
             new Pi { AssetNumber = "702", HostName = "m702spark", IPAddress = "10.0.110.27" },
-            new Pi { AssetNumber = "1005", HostName = "m1005spark", IPAddress = "10.0.205.14" },
+            new Pi { AssetNumber = "1005", HostName = "m1005spark", IPAddress = "" },
             new Pi { AssetNumber = "1090", HostName = "m1090spark", IPAddress = "10.0.205.10" },
             new Pi { AssetNumber = "155", HostName = "m155spark2", IPAddress = "" },
             new Pi { AssetNumber = "944", HostName = "m944spark", IPAddress = "" },

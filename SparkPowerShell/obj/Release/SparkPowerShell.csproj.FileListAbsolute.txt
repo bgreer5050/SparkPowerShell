@@ -12,3 +12,4 @@ C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\obj\Release\SparkP
 C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\obj\Release\SparkPowerShell.csproj.GenerateResource.Cache
 C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\obj\Release\SparkPowerShell.exe
 C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\obj\Release\SparkPowerShell.pdb
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SparkPowerShell\obj\Release\SparkPowerShell.csprojResolveAssemblyReference.cache
