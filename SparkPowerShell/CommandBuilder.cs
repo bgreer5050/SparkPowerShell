@@ -34,8 +34,13 @@ namespace SparkPowerShell
 
             return strCommand;
         }
-       
 
-        
+        internal static string GetProcessList()
+        {
+            //string strCommand = @"get-process";
+            string strCommand = @"tlist";
+
+            return strCommand;
+        }
     }
 }

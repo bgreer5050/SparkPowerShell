@@ -47,13 +47,127 @@ namespace SparkPowerShell
             new Pi { AssetNumber = "605", HostName = "m605spark", IPAddress = "10.0.110.25" },
             new Pi { AssetNumber = "701", HostName = "m701spark", IPAddress = "10.0.110.22" },
             new Pi { AssetNumber = "804", HostName = "m804spark", IPAddress = "10.0.110.24" },
+            new Pi { AssetNumber = "768", HostName = "m768spark", IPAddress = "10.0.110.20" },
+
             new Pi { AssetNumber = "483", HostName = "", IPAddress = "" }
         };
-             timerUppdateTime = new Timer(UpdatePis, null, 5000, 900000);
-            this.DataContext = Pis;
-            lstNames.ItemsSource = Pis;
+           //  timerUppdateTime = new Timer(UpdatePis, null, 5000, 900000);
+             timerReboot = new Timer(RebootPis, null, 5000, 3600000);
+             this.DataContext = Pis;
+             lstNames.ItemsSource = Pis;
             
     }
+
+        private void RebootPis(object state)
+        {
+            foreach (Pi p in Pis.Where(c=>c.AssetNumber=="768").ToList())
+            {
+                
+              
+                var cts = new CancellationTokenSource();
+                CancellationToken token = cts.Token;
+                cts.CancelAfter(350000);
+
+
+                var task = Task.Factory.StartNew(() =>
+                {
+
+                    try
+                    {
+
+                        string domainAndUserName;
+                        if (p.IPAddress != null && p.IPAddress.Length > 5)
+                        {
+                            domainAndUserName = p.IPAddress + @"\Administrator";
+                        }
+                        else
+                        {
+                            domainAndUserName = p.HostName + @"\Administrator";
+                        }
+
+                       
+
+                        //Create a SecureString object
+                        SecureString securePassword;
+
+                        // Define the string value to assign to a new secure string.
+                        //char[] chars = { 'p', '@', 's', 's', 'w', '0', 'r', 'd' };
+                        char[] chars = { 's', 'p', 'a', 'r', 'k', 'p', 'i' };
+
+                        unsafe
+                        {
+                            fixed (char* pChars = chars)
+                            {
+                                securePassword = new SecureString(pChars, chars.Length);
+                            }
+                        }
+
+
+                        PSCredential remoteMachineCredentials = new PSCredential(domainAndUserName, securePassword);
+
+
+                        WSManConnectionInfo connectionInfo;
+                        if (p.IPAddress != null && p.IPAddress.Length > 5)
+                        {
+                            connectionInfo = new WSManConnectionInfo(false, p.IPAddress, 5985, "/wsman", @"http://schemas.microsoft.com/powershell/Microsoft.PowerShell", remoteMachineCredentials);
+                        }
+                        else
+                        {
+                            connectionInfo = new WSManConnectionInfo(false, p.HostName, 5985, "/wsman", @"http://schemas.microsoft.com/powershell/Microsoft.PowerShell", remoteMachineCredentials);
+                        }
+                        Runspace rspace = RunspaceFactory.CreateRunspace();
+                        rspace.Open();
+                        Pipeline pl;
+                        if (p.IPAddress != null && p.IPAddress.Length > 5)
+                        {
+                            pl = rspace.CreatePipeline("Set-Item WSMan:\\localhost\\Client\\TrustedHosts -Value " + p.IPAddress + " -Force");
+                        }
+                        else
+                        {
+                            pl = rspace.CreatePipeline("Set-Item WSMan:\\localhost\\Client\\TrustedHosts -Value " + p.HostName + " -Force");
+                        }
+
+
+                        //rspace.Open();
+                        var _result = pl.Invoke();
+                        Debug.WriteLine("R1: " + _result.ToString());
+
+                        using (Runspace runspace = RunspaceFactory.CreateRunspace(connectionInfo))
+                        {
+
+                            runspace.Open();
+
+                            // string command = CommandBuilder.Reboot();
+                             string command = CommandBuilder.GetProcessList();
+
+                            Pipeline pipeline = runspace.CreatePipeline(command);
+                          
+                            var results = pipeline.Invoke();
+
+                         
+                        }
+
+                        securePassword.Dispose();
+                        token.ThrowIfCancellationRequested();
+                    }
+                    catch (Exception ex)
+                    {
+                      
+                    
+                    }
+                }, token);
+
+                try
+                {
+                    task.Wait();
+                }
+                catch (AggregateException ex)
+                {
+                  
+                }
+                // MessageBox.Show("Success " + intSuccess.ToString() + " Fail " + intFail.ToString() + strMessages);
+            }
+        }
 
         private async void UpdatePis(object state)
         {
@@ -205,6 +319,7 @@ namespace SparkPowerShell
         }
 
         System.Threading.Timer timerUppdateTime;
+        System.Threading.Timer timerReboot;
 
     }
 }
