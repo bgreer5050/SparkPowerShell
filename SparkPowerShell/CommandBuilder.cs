@@ -42,5 +42,11 @@ namespace SparkPowerShell
 
             return strCommand;
         }
+
+        internal static string KillProcess(string strProcessName)
+        {
+            string strCommand = @"Stop-Process -processname " + strProcessName;
+            return strCommand;
+        }
     }
 }

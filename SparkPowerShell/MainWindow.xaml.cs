@@ -36,6 +36,9 @@ namespace SparkPowerShell
 
             Pis = new ObservableCollection<Pi>()
             {
+
+            new Pi { AssetNumber = "1054", HostName = "m1054spark", IPAddress = "10.0.110.31" },
+            new Pi { AssetNumber = "1025", HostName = "m1025spark", IPAddress = "10.0.110.28" },
             new Pi { AssetNumber = "135", HostName = "m135spark", IPAddress = "10.0.205.12" },
             new Pi { AssetNumber = "702", HostName = "m702spark", IPAddress = "10.0.110.27" },
             new Pi { AssetNumber = "1005", HostName = "m1005spark", IPAddress = "" },
@@ -48,11 +51,10 @@ namespace SparkPowerShell
             new Pi { AssetNumber = "701", HostName = "m701spark", IPAddress = "10.0.110.22" },
             new Pi { AssetNumber = "804", HostName = "m804spark", IPAddress = "10.0.110.24" },
             new Pi { AssetNumber = "768", HostName = "m768spark", IPAddress = "10.0.110.20" },
-
             new Pi { AssetNumber = "483", HostName = "", IPAddress = "" }
         };
            //  timerUppdateTime = new Timer(UpdatePis, null, 5000, 900000);
-             timerReboot = new Timer(RebootPis, null, 5000, 3600000);
+             timerReboot = new Timer(RebootPis, null, 1000, 3600000);
              this.DataContext = Pis;
              lstNames.ItemsSource = Pis;
             
@@ -143,6 +145,17 @@ namespace SparkPowerShell
                             Pipeline pipeline = runspace.CreatePipeline(command);
                           
                             var results = pipeline.Invoke();
+
+                            foreach(var x in results.ToList())
+                            {
+                                Debug.WriteLine(x.BaseObject.ToString());
+
+                                if (x.ToString().Contains("Spark") == true)
+                                {
+                                    command = CommandBuilder.KillProcess(x.ToString());
+                                    var res = pipeline.Invoke(command);
+                                }
+                            }
 
                          
                         }
