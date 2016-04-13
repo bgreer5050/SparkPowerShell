@@ -36,6 +36,10 @@ namespace SparkPowerShell
 
             Pis = new ObservableCollection<Pi>()
             {
+
+            new Pi { AssetNumber = "1072", HostName = "m1072spark", IPAddress = "10.0.110.33" },
+            new Pi { AssetNumber = "1054", HostName = "m1054spark", IPAddress = "10.0.110.31" },
+            new Pi { AssetNumber = "1025", HostName = "m1025spark", IPAddress = "10.0.110.28" },
             new Pi { AssetNumber = "135", HostName = "m135spark", IPAddress = "10.0.205.12" },
             new Pi { AssetNumber = "702", HostName = "m702spark", IPAddress = "10.0.110.27" },
             new Pi { AssetNumber = "1005", HostName = "m1005spark", IPAddress = "" },
@@ -62,6 +66,7 @@ namespace SparkPowerShell
 
             foreach (Pi p in Pis.Where(c=>c.TimeUpdateDue==true).ToList())
             {
+                Debug.WriteLine("Trying to update {0} ", p.AssetNumber);
                 p.Note = "Attempting: " + DateTime.Now.ToLocalTime();
 
                 string strMessages = p.HostName;

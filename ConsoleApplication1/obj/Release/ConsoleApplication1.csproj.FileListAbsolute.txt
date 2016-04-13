@@ -3,3 +3,4 @@ C:\Users\admin\OneDrive\Repos\SparkPowerShell\ConsoleApplication1\bin\Release\Co
 C:\Users\admin\OneDrive\Repos\SparkPowerShell\ConsoleApplication1\bin\Release\ConsoleApplication1.pdb
 C:\Users\admin\OneDrive\Repos\SparkPowerShell\ConsoleApplication1\obj\Release\ConsoleApplication1.exe
 C:\Users\admin\OneDrive\Repos\SparkPowerShell\ConsoleApplication1\obj\Release\ConsoleApplication1.pdb
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\ConsoleApplication1\obj\Release\ConsoleApplication1.csprojResolveAssemblyReference.cache
