@@ -1,0 +1,10 @@
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SetUpSpark.Desktop\obj\Release\SetUpSpark.Desktop.csprojResolveAssemblyReference.cache
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SetUpSpark.Desktop\obj\Release\SetUpSpark.Desktop.Form1.resources
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SetUpSpark.Desktop\obj\Release\SetUpSpark.Desktop.Properties.Resources.resources
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SetUpSpark.Desktop\obj\Release\SetUpSpark.Desktop.csproj.GenerateResource.Cache
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SetUpSpark.Desktop\bin\Release\SetUpSpark.Desktop.exe.config
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SetUpSpark.Desktop\bin\Release\SetUpSpark.Desktop.exe
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SetUpSpark.Desktop\bin\Release\SetUpSpark.Desktop.pdb
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SetUpSpark.Desktop\bin\Release\System.Management.Automation.dll
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SetUpSpark.Desktop\obj\Release\SetUpSpark.Desktop.exe
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SetUpSpark.Desktop\obj\Release\SetUpSpark.Desktop.pdb
