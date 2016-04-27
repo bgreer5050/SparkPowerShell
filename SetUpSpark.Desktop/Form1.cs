@@ -154,6 +154,12 @@ namespace SetUpSpark.Desktop
         {
             this.pi.IPAddress = textBox1.Text.Trim();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            pi = new SparkPi("0.0.0.0", "0.0.0.0", this);
+            textBox1.Text = "0.0.0.0";
+        }
     }
 
 
