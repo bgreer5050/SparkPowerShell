@@ -7,3 +7,4 @@ C:\Users\admin\OneDrive\Repos\SparkPowerShell\SetUpSpark.Desktop\bin\Debug\SetUp
 C:\Users\admin\OneDrive\Repos\SparkPowerShell\SetUpSpark.Desktop\bin\Debug\System.Management.Automation.dll
 C:\Users\admin\OneDrive\Repos\SparkPowerShell\SetUpSpark.Desktop\obj\Debug\SetUpSpark.Desktop.exe
 C:\Users\admin\OneDrive\Repos\SparkPowerShell\SetUpSpark.Desktop\obj\Debug\SetUpSpark.Desktop.pdb
+C:\Users\admin\OneDrive\Repos\SparkPowerShell\SetUpSpark.Desktop\obj\Debug\SetUpSpark.Desktop.csprojResolveAssemblyReference.cache
