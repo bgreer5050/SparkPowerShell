@@ -32,8 +32,7 @@ namespace SetUpSpark.Desktop
 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            Form1 frm = (Form1)this.FindForm();
-            pi = new SparkPi("192.168.1.109", "192.168.1.109", frm);
+          
             pi.Connect();
         }
 
@@ -44,19 +43,18 @@ namespace SetUpSpark.Desktop
 
         private void btnSetTimeZone_Click(object sender, EventArgs e)
         {
-            if (pi == null)
-            {
-                Form1 frm = (Form1)this.FindForm();
-                pi = new SparkPi("192.168.1.109", "192.168.1.109", frm);
-            }
+          
             pi.SetTimeZone();
         }
 
         private void btnCopyTaskFile_Click(object sender, EventArgs e)
         {
 
-            System.IO.File.Copy(@"c:\Temp\SyncTime.ps1", @"\\192.168.1.109\c$\SyncTime2.ps1");
             MessageBox.Show("NOT IMPLEMENTED");
+
+            //System.IO.File.Copy(@"c:\Temp\SyncTime.ps1", @"\\192.168.1.109\c$\SyncTime2.ps1");
+            
+            
             //if (pi == null)
             //{
             //    Form1 frm = (Form1)this.FindForm();
@@ -69,32 +67,20 @@ namespace SetUpSpark.Desktop
 
         private void btnScheduleTasks_Click(object sender, EventArgs e)
         {
-            if (pi == null)
-            {
-                Form1 frm = (Form1)this.FindForm();
-                pi = new SparkPi("192.168.1.109", "192.168.1.109", frm);
-            }
+            
             pi.ScheduleTasks();
             MessageBox.Show("Make Sure SyncTime.ps1 exists in the root of the device.");
         }
 
         private void btnSetDNSServer_Click(object sender, EventArgs e)
         {
-            if (pi == null)
-            {
-                Form1 frm = (Form1)this.FindForm();
-                pi = new SparkPi("192.168.1.109", "192.168.1.109", frm);
-            }
+            
             pi.SetDNSEthernet();
         }
 
         private void btnSetDNSWiFi_Click(object sender, EventArgs e)
         {
-            if (pi == null)
-            {
-                Form1 frm = (Form1)this.FindForm();
-                pi = new SparkPi("192.168.1.109", "192.168.1.109", frm);
-            }
+          
             pi.SetDNSWiFi();
         }
 
@@ -139,15 +125,8 @@ namespace SetUpSpark.Desktop
         private void btnNewName_Click(object sender, EventArgs e)
         {
             Form1 frm = (Form1)this.FindForm();
-            if (txtNewName.Text != "")
-            {
-                if (pi == null)
-                {
-                     
-                    pi = new SparkPi("192.168.1.109", "192.168.1.109", frm);
-                }
-                pi.ChangeName(txtNewName.Text);
-            }
+            pi.ChangeName(txtNewName.Text);
+         
         }
 
         private void textBox1_Leave(object sender, EventArgs e)
