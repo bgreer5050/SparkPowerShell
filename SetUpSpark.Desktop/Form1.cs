@@ -166,8 +166,8 @@ namespace SetUpSpark.Desktop
                 if(_securePassword == null)
                 {
                     // Define the string value to assign to a new secure string.
-                    char[] chars = { 'p', '@', 's', 's', 'w', '0', 'r', 'd' };
-                    //char[] chars = { 's', 'p', 'a', 'r', 'k', 'p', 'i' };
+                    //char[] chars = { 'p', '@', 's', 's', 'w', '0', 'r', 'd' };
+                    char[] chars = { 's', 'p', 'a', 'r', 'k', 'p', 'i' };
                     unsafe
                     {
                         fixed (char* pChars = chars)
